@@ -150,9 +150,29 @@ header p{
   20%,33.3%{border-color:var(--lamp);box-shadow:0 0 18px rgba(240,180,41,.6),inset 0 0 10px rgba(240,180,41,.25)}
   33.31%,100%{border-color:var(--line);box-shadow:none}
 }
+/* Oc(2)WRG 12s — occulting: mostly lit, with brief eclipses in pairs.
+   Cycles through the three sectors so the card carries its own colour. */
+@keyframes oc2wrg{
+  0%,11.9%{border-color:#F2F7F8;box-shadow:0 0 14px rgba(242,247,248,.4),inset 0 0 9px rgba(242,247,248,.18)}
+  12%,14.9%{border-color:var(--line);box-shadow:none}
+  15%,21.9%{border-color:#F2F7F8;box-shadow:0 0 14px rgba(242,247,248,.4),inset 0 0 9px rgba(242,247,248,.18)}
+  22%,24.9%{border-color:var(--line);box-shadow:none}
+  25%,33.2%{border-color:#F2F7F8;box-shadow:0 0 14px rgba(242,247,248,.4),inset 0 0 9px rgba(242,247,248,.18)}
+  33.3%,44.9%{border-color:#E8555F;box-shadow:0 0 14px rgba(232,85,95,.45),inset 0 0 9px rgba(232,85,95,.2)}
+  45%,47.9%{border-color:var(--line);box-shadow:none}
+  48%,54.9%{border-color:#E8555F;box-shadow:0 0 14px rgba(232,85,95,.45),inset 0 0 9px rgba(232,85,95,.2)}
+  55%,57.9%{border-color:var(--line);box-shadow:none}
+  58%,66.5%{border-color:#E8555F;box-shadow:0 0 14px rgba(232,85,95,.45),inset 0 0 9px rgba(232,85,95,.2)}
+  66.6%,77.9%{border-color:#35C08A;box-shadow:0 0 14px rgba(53,192,138,.45),inset 0 0 9px rgba(53,192,138,.2)}
+  78%,80.9%{border-color:var(--line);box-shadow:none}
+  81%,87.9%{border-color:#35C08A;box-shadow:0 0 14px rgba(53,192,138,.45),inset 0 0 9px rgba(53,192,138,.2)}
+  88%,90.9%{border-color:var(--line);box-shadow:none}
+  91%,100%{border-color:#35C08A;box-shadow:0 0 14px rgba(53,192,138,.45),inset 0 0 9px rgba(53,192,138,.2)}
+}
 .lamp.fl3{animation:fl3 15s infinite}
 .lamp.iso{animation:iso 4s infinite}
 .lamp.q6lfl{animation:q6lfl 15s infinite}
+.lamp.oc2wrg{animation:oc2wrg 12s infinite}
 
 /* ---------- footer ---------- */
 footer{
@@ -227,6 +247,26 @@ footer a:hover,footer a:focus-visible{color:var(--lamp);border-color:var(--lamp)
           <span class="char">Iso 4s</span>
         </div>
         <p>Who gives way, and which rule decides it. Rules 12 to 18, drilled on a plotting sheet.</p>
+      </div>
+    </a>
+
+    <a href="/seamarks/" class="card">
+      <div class="lamp oc2wrg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M12 2.1 14.3 5.9H9.7z"/>
+          <path d="M12 5.9v2.7"/>
+          <path d="M9.2 8.6h5.6l1.1 6.5H8.1z"/>
+          <path d="M3 18.4q2.6-1.7 5.2 0t5.2 0 5.2 0"/>
+          <path d="M3 21.4q2.6-1.7 5.2 0t5.2 0 5.2 0"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="title-row">
+          <h2>Seamarks</h2>
+          <span class="char">Oc(2)WRG 12s</span>
+        </div>
+        <p>Lateral, cardinal and special marks — read the topmark by day, the light by night.</p>
       </div>
     </a>
 
