@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects &amp; Miscellany · Günter Fleck</title>
+<meta name="description" content="Tools, study material and experiments by Günter Fleck.">
+<meta name="theme-color" content="#05121A">
+<style>
+:root{
+  --abyss:#05121A;
+  --panel:#0B1E29;
+  --panel-lit:#102A38;
+  --line:#1B3644;
+  --foam:#E9F1F4;
+  --haze:#7C99A6;
+  --lamp:#F0B429;
+  --sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+  --serif:Georgia,"Iowan Old Style","Palatino Linotype",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:var(--sans);
+  background:var(--abyss);
+  color:var(--foam);
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:2.5rem 1rem;
+  position:relative;
+  overflow-x:hidden;
+}
+/* the loom of a light below the horizon */
+body::before{
+  content:"";position:fixed;inset:auto 0 0 0;height:65vh;pointer-events:none;
+  background:radial-gradient(60% 100% at 50% 130%,rgba(240,180,41,.16),transparent 70%);
+}
+.container{max-width:660px;width:100%;position:relative}
+
+/* ---------- compass tick strip ---------- */
+.ticks{
+  height:12px;margin-bottom:1.75rem;opacity:.55;
+  background:
+    repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 16px) bottom/100% 6px no-repeat,
+    repeating-linear-gradient(90deg,var(--haze) 0 1px,transparent 1px 80px) bottom/100% 11px no-repeat;
+}
+
+/* ---------- header ---------- */
+header{margin-bottom:2.25rem}
+.eyebrow{
+  font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--lamp);margin-bottom:.7rem;
+}
+h1{
+  font-size:clamp(2rem,8.5vw,2.9rem);line-height:1.02;font-weight:800;
+  letter-spacing:-.035em;
+}
+h1 .amp{color:var(--lamp);font-weight:400}
+header p{
+  font-family:var(--serif);font-style:italic;
+  color:var(--haze);font-size:1.02rem;line-height:1.5;margin-top:.85rem;max-width:44ch;
+}
+.horizon{
+  height:1px;margin:1.75rem 0 0;
+  background:linear-gradient(90deg,var(--line),rgba(240,180,41,.5),var(--line));
+}
+
+/* ---------- cards ---------- */
+.card-grid{display:flex;flex-direction:column;gap:.9rem;margin-top:1.75rem}
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:1.15rem 1.35rem;
+  display:flex;align-items:center;gap:1.15rem;
+  text-decoration:none;color:inherit;
+  position:relative;overflow:hidden;
+  transition:transform .22s ease,border-color .22s ease,background-color .22s ease;
+}
+/* beam that sweeps across on hover */
+.card::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 35%,rgba(240,180,41,.09) 50%,transparent 65%);
+  transform:translateX(-100%);transition:transform .55s ease;
+}
+.card:hover,.card:focus-visible{
+  border-color:rgba(240,180,41,.55);
+  background:var(--panel-lit);
+  transform:translateY(-2px);
+}
+.card:hover::after,.card:focus-visible::after{transform:translateX(100%)}
+.card:focus-visible{outline:2px solid var(--lamp);outline-offset:3px}
+.card:active{transform:translateY(0)}
+
+/* the icon ring IS the light */
+.lamp{
+  flex:0 0 3.1rem;width:3.1rem;height:3.1rem;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);color:var(--haze);
+  transition:color .22s ease;
+}
+.lamp svg{width:1.5rem;height:1.5rem}
+.card:hover .lamp,.card:focus-visible .lamp{color:var(--foam)}
+
+.card-body{flex:1;min-width:0}
+.title-row{display:flex;align-items:baseline;gap:.75rem}
+.card-body h2{
+  font-size:1.1rem;font-weight:650;letter-spacing:-.01em;flex:1;min-width:0;
+}
+.char{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  color:var(--haze);white-space:nowrap;flex-shrink:0;
+  transition:color .22s ease;
+}
+.card:hover .char,.card:focus-visible .char{color:var(--lamp)}
+.card-body p{
+  font-size:.885rem;color:var(--haze);line-height:1.45;margin-top:.3rem;
+}
+
+/* ---------- light characters ---------- */
+/* Fl(3)15s — three flashes, then dark */
+@keyframes fl3{
+  0%,2%{border-color:var(--lamp);box-shadow:0 0 14px rgba(240,180,41,.5),inset 0 0 9px rgba(240,180,41,.22)}
+  2.01%,4.6%{border-color:var(--line);box-shadow:none}
+  4.61%,6.6%{border-color:var(--lamp);box-shadow:0 0 14px rgba(240,180,41,.5),inset 0 0 9px rgba(240,180,41,.22)}
+  6.61%,9.2%{border-color:var(--line);box-shadow:none}
+  9.21%,11.2%{border-color:var(--lamp);box-shadow:0 0 14px rgba(240,180,41,.5),inset 0 0 9px rgba(240,180,41,.22)}
+  11.21%,100%{border-color:var(--line);box-shadow:none}
+}
+/* Iso 4s — equal light and dark */
+@keyframes iso{
+  0%,49.9%{border-color:var(--lamp);box-shadow:0 0 14px rgba(240,180,41,.5),inset 0 0 9px rgba(240,180,41,.22)}
+  50%,100%{border-color:var(--line);box-shadow:none}
+}
+/* Q(6)+LFl 15s — south cardinal: six quick, then a long flash */
+@keyframes q6lfl{
+  0%,1.6%{border-color:var(--lamp);box-shadow:0 0 12px rgba(240,180,41,.45)}
+  1.61%,3.32%{border-color:var(--line);box-shadow:none}
+  3.33%,4.93%{border-color:var(--lamp);box-shadow:0 0 12px rgba(240,180,41,.45)}
+  4.94%,6.66%{border-color:var(--line);box-shadow:none}
+  6.67%,8.27%{border-color:var(--lamp);box-shadow:0 0 12px rgba(240,180,41,.45)}
+  8.28%,9.99%{border-color:var(--line);box-shadow:none}
+  10%,11.6%{border-color:var(--lamp);box-shadow:0 0 12px rgba(240,180,41,.45)}
+  11.61%,13.32%{border-color:var(--line);box-shadow:none}
+  13.33%,14.93%{border-color:var(--lamp);box-shadow:0 0 12px rgba(240,180,41,.45)}
+  14.94%,16.66%{border-color:var(--line);box-shadow:none}
+  16.67%,18.27%{border-color:var(--lamp);box-shadow:0 0 12px rgba(240,180,41,.45)}
+  18.28%,19.99%{border-color:var(--line);box-shadow:none}
+  20%,33.3%{border-color:var(--lamp);box-shadow:0 0 18px rgba(240,180,41,.6),inset 0 0 10px rgba(240,180,41,.25)}
+  33.31%,100%{border-color:var(--line);box-shadow:none}
+}
+.lamp.fl3{animation:fl3 15s infinite}
+.lamp.iso{animation:iso 4s infinite}
+.lamp.q6lfl{animation:q6lfl 15s infinite}
+
+/* ---------- footer ---------- */
+footer{
+  margin-top:2.75rem;padding-top:1.1rem;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--haze);
+}
+footer a{color:var(--haze);text-decoration:none;border-bottom:1px solid var(--line)}
+footer a:hover,footer a:focus-visible{color:var(--lamp);border-color:var(--lamp)}
+
+@media (max-width:420px){
+  .card{padding:1rem 1.05rem;gap:.9rem}
+  .lamp{flex-basis:2.6rem;width:2.6rem;height:2.6rem}
+  .lamp svg{width:1.25rem;height:1.25rem}
+  .title-row{flex-wrap:wrap;gap:.15rem .6rem}
+}
+
+/* every light becomes fixed, and nothing moves */
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+  .card:hover,.card:focus-visible{transform:none}
+  .card::after{display:none}
+  .lamp{animation:none!important;border-color:rgba(240,180,41,.6)}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="ticks" aria-hidden="true"></div>
+
+  <header>
+    <p class="eyebrow">Index of stations</p>
+    <h1>Projects <span class="amp">&amp;</span> Miscellany</h1>
+    <p>Tools, study material, and things built for the fun of it. Each station shows its own light.</p>
+    <div class="horizon"></div>
+  </header>
+
+  <nav class="card-grid">
+
+    <a href="/fb3/" class="card">
+      <div class="lamp fl3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M12.9 3.2v10.3h6.2z"/>
+          <path d="M11.1 5.4v8.1H5.4z"/>
+          <path d="M3 16.5h18l-2.6 4.3H5.6z"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="title-row">
+          <h2>Fahrtbereich 3</h2>
+          <span class="char">Fl(3)15s</span>
+        </div>
+        <p lang="de">Prüfungsvorbereitung für küstennahe Fahrt bis 200 Seemeilen.</p>
+      </div>
+    </a>
+
+    <a href="/colreg/" class="card">
+      <div class="lamp iso">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M15.9 8.1 10.4 10.4 8.1 15.9l5.5-2.3z"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="title-row">
+          <h2>COLREGs Drill</h2>
+          <span class="char">Iso 4s</span>
+        </div>
+        <p>Who gives way, and which rule decides it. Rules 12 to 18, drilled on a plotting sheet.</p>
+      </div>
+    </a>
+
+    <a href="/fenstergucker/" class="card">
+      <div class="lamp q6lfl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M4 8.5V5.6A1.6 1.6 0 0 1 5.6 4h1.8A1.6 1.6 0 0 1 9 5.6v2.9"/>
+          <path d="M15 8.5V5.6A1.6 1.6 0 0 1 16.6 4h1.8A1.6 1.6 0 0 1 20 5.6v2.9"/>
+          <rect x="3" y="8.5" width="6" height="11.5" rx="3"/>
+          <rect x="15" y="8.5" width="6" height="11.5" rx="3"/>
+          <path d="M9 12.5h6"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="title-row">
+          <h2>Fenstergucker</h2>
+          <span class="char">Q(6)+LFl 15s</span>
+        </div>
+        <p lang="de">Blödsinn und sonstige visuelle Spielereien.</p>
+      </div>
+    </a>
+
+  </nav>
+
+  <footer>
+    <span>&copy; Günter Fleck</span>
+    <span><a href="https://github.com/guenterfleck">github.com/guenterfleck</a></span>
+  </footer>
+
+</div>
+
+</body>
+</html>
