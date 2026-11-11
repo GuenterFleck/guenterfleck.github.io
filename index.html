@@ -6,6 +6,13 @@
 <title>Projects &amp; Miscellany · Günter Fleck</title>
 <meta name="description" content="Tools, study material and experiments by Günter Fleck.">
 <meta name="theme-color" content="#05121A">
+<!-- tab icon: a lit lamp -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2305121A'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%23F0B429' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23F0B429'/%3E%3C/svg%3E">
+<!-- preview card when the link is shared (WhatsApp, Signal, Mastodon, …) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fleck.boo/">
+<meta property="og:title" content="Projects &amp; Miscellany · Günter Fleck">
+<meta property="og:description" content="Tools, study material and experiments by Günter Fleck.">
 <style>
 :root{
   --abyss:#05121A;
@@ -114,6 +121,7 @@ header p{
   transition:color .22s ease;
 }
 .card:hover .char,.card:focus-visible .char{color:var(--lamp)}
+abbr.char{text-decoration:none}
 .card-body p{
   font-size:.885rem;color:var(--haze);line-height:1.45;margin-top:.3rem;
 }
@@ -169,7 +177,15 @@ header p{
   88%,90.9%{border-color:var(--line);box-shadow:none}
   91%,100%{border-color:#35C08A;box-shadow:0 0 14px rgba(53,192,138,.45),inset 0 0 9px rgba(53,192,138,.2)}
 }
+/* Mo(A) 6s — safe water mark: Morse "A", a short and a long flash */
+@keyframes moa{
+  0%,8.3%{border-color:var(--lamp);box-shadow:0 0 14px rgba(240,180,41,.5),inset 0 0 9px rgba(240,180,41,.22)}
+  8.31%,16.6%{border-color:var(--line);box-shadow:none}
+  16.61%,41.6%{border-color:var(--lamp);box-shadow:0 0 16px rgba(240,180,41,.55),inset 0 0 10px rgba(240,180,41,.24)}
+  41.61%,100%{border-color:var(--line);box-shadow:none}
+}
 .lamp.fl3{animation:fl3 15s infinite}
+.lamp.moa{animation:moa 6s infinite}
 .lamp.iso{animation:iso 4s infinite}
 .lamp.q6lfl{animation:q6lfl 15s infinite}
 .lamp.oc2wrg{animation:oc2wrg 12s infinite}
@@ -213,7 +229,7 @@ footer a:hover,footer a:focus-visible{color:var(--lamp);border-color:var(--lamp)
     <div class="horizon"></div>
   </header>
 
-  <nav class="card-grid">
+  <nav class="card-grid" aria-label="Projects">
 
     <a href="/fb3/" class="card">
       <div class="lamp fl3">
@@ -227,7 +243,7 @@ footer a:hover,footer a:focus-visible{color:var(--lamp);border-color:var(--lamp)
       <div class="card-body">
         <div class="title-row">
           <h2>Fahrtbereich 3</h2>
-          <span class="char">Fl(3)15s</span>
+          <abbr class="char" title="Flashing, groups of 3 flashes, every 15 seconds">Fl(3)15s</abbr>
         </div>
         <p lang="de">Prüfungsvorbereitung für küstennahe Fahrt bis 200 Seemeilen.</p>
       </div>
@@ -244,7 +260,7 @@ footer a:hover,footer a:focus-visible{color:var(--lamp);border-color:var(--lamp)
       <div class="card-body">
         <div class="title-row">
           <h2>COLREGs Drill</h2>
-          <span class="char">Iso 4s</span>
+          <abbr class="char" title="Isophase: equal light and dark, every 4 seconds">Iso 4s</abbr>
         </div>
         <p>Who gives way, and which rule decides it. Rules 12 to 18, drilled on a plotting sheet.</p>
       </div>
@@ -264,9 +280,29 @@ footer a:hover,footer a:focus-visible{color:var(--lamp);border-color:var(--lamp)
       <div class="card-body">
         <div class="title-row">
           <h2>Seamarks</h2>
-          <span class="char">Oc(2)WRG 12s</span>
+          <abbr class="char" title="Occulting, groups of 2 eclipses, white, red and green sectors, every 12 seconds">Oc(2)WRG 12s</abbr>
         </div>
         <p>Lateral, cardinal and special marks — read the topmark by day, the light by night.</p>
+      </div>
+    </a>
+
+    <a href="/sailtrim/" class="card">
+      <div class="lamp moa">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M8.6 2.8v15.6"/>
+          <path d="M8.6 3.6Q14.8 9.4 16 17.4H8.6"/>
+          <path d="M13.2 9.2q1.3-.7 2.6 0t2.6 0"/>
+          <path d="M15.1 13.4q1.2-.7 2.4 0t2.4 0"/>
+          <path d="M3.5 21q2.2-1.3 4.4 0t4.4 0 4.4 0 4.4 0"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="title-row">
+          <h2>SailTrim</h2>
+          <abbr class="char" title="Morse A, a short and a long flash, every 6 seconds: safe water">Mo(A) 6s</abbr>
+        </div>
+        <p>A sailing simulator: trim main and genoa by the telltales, through gusts and shifts.</p>
       </div>
     </a>
 
@@ -284,7 +320,7 @@ footer a:hover,footer a:focus-visible{color:var(--lamp);border-color:var(--lamp)
       <div class="card-body">
         <div class="title-row">
           <h2>Fenstergucker</h2>
-          <span class="char">Q(6)+LFl 15s</span>
+          <abbr class="char" title="6 quick flashes and a long flash, every 15 seconds: south cardinal">Q(6)+LFl 15s</abbr>
         </div>
         <p lang="de">Blödsinn und sonstige visuelle Spielereien.</p>
       </div>
